@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashRegister</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Return Calculator <i class="fas fa-calculator"></i></h2>
+
+        <input type="text" id="bill" placeholder="Enter bill total">
+        <input type="text" name="" id="paid" placeholder="Enter amount given ">
+
+        <div class="buttons">
+            <button id="btn">Calculate <i class="fas fa-angle-double-right"></i></button>
+            <button id="clear">Clear <i class="fas fa-trash-alt"></i></button>
+        </div>
+
+        <h4 class="data">Remaining <i class="fas fa-rupee-sign"></i> : <span id="change"></span></h4>
+
+        <div class="whole">
+            <div class="data">
+                <h4>2000 <i class="fas fa-rupee-sign"></i> Notes: <span id="twothousand"></span></h4>
+            </div>
+            <div class="data">
+                <h4>500 <i class="fas fa-rupee-sign"></i> Notes: <span id="fivehundred"></span></h4>
+            </div>
+            <div class="data">
+                <h4>100 <i class="fas fa-rupee-sign"></i> Notes: <span id="hundred"></span></h4>
+            </div>
+            <div class="data">
+                <h4>10 <i class="fas fa-rupee-sign"></i> Notes: <span id="ten"></span></h4>
+            </div>
+            <div class="data">
+                <h4>5 <i class="fas fa-rupee-sign"></i> coins: <span id="five"></span></h4>
+            </div>
+            <div class="data">
+                <h4>1 <i class="fas fa-rupee-sign"></i> coins: <span id="one"></span></h4>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
