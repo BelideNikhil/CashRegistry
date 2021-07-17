@@ -33,6 +33,7 @@ h2{
     padding: 30px 20px;
 }
 .output{
+    display: none;
     border: 2px double black;
     margin: 10px 0;
     height: 40px;
