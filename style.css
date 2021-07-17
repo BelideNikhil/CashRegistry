@@ -1,6 +1,12 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 body{
+    padding-top: 20px;
     background: url(https://www.hwco.com/wp-content/uploads/2018/11/cash-register.jpg) no-repeat center center/cover;
-    position: relative;
+    height: 100vh;
 }
 .container{
     margin: auto;
@@ -12,13 +18,14 @@ body{
     box-shadow: rgba(0, 0, 0, 0.356) 0px 14px 28px, rgba(0, 0, 0, 0.295) 0px 10px 10px;
     background: rgba(51, 51, 51, 0.452);
     border-radius: 10px;
+    padding: 20px;
 }
 input{
     display: block;
-    margin: 8px 0;
-    width: 200px;
+    margin-top: 15px;
+    width: 250px;
     height: 30px;
-    padding:  5px 10px;
+    padding:15px  10px;
     border-radius: 10px;
 }
 input:focus{
@@ -68,16 +75,6 @@ h2{
     margin-right: 20px;
     border-radius: 10px;
 }
-footer{
-    text-align: center;
-    color: salmon;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -50%;
-    width: 100%;
-}
-
 
 @media screen and (max-width:500px) {
     input{
