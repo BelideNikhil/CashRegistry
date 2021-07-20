@@ -1,4 +1,5 @@
 console.log("it's working")
+const calculate=document.querySelector("#calculate")
 const clear=document.querySelector("#clear")
 
 let two_thousand=document.querySelector("#twothousand")
@@ -16,22 +17,42 @@ const notes_num= [2000, 500, 100, 10, 5, 1]
 
 
 calculate.addEventListener("click",()=>{
+    calculate.innerHTML=`Next <i class="fas fa-angle-double-right"></i>`;
     output_div.style.display="block";
     let bill_amount=document.querySelector("#bill")
     let paid_amount=document.querySelector("#paid")
-    const calculate=document.querySelector("#calculate")
-    const return_amount=document.querySelector("#change")
 
-    paid_amount=Number(paid_amount.value)
+    paid_amount.style.display="none";
+    
+    const return_amount=document.querySelector("#change")
     bill_amount=Number(bill_amount.value)
-    change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${paid_amount-bill_amount} to the customer.`
-    change.style.color='green';
-    returnable=paid_amount-bill_amount
-    if( bill_amount===0 || paid_amount===0 || returnable<0 ){
+    
+    if( bill_amount===0 ){
+        console.log(bill_amount)
         errorhandler();
     }
     else{
-        handler();
+        calculate.innerHTML=`Calculate <i class="fas fa-angle-double-right"></i>`;
+        paid_amount.style.display="block";
+        paid_amount=Number(paid_amount.value)
+        if( paid_amount===0 ){
+            errorhandler();
+        }
+        else{
+            
+            returnable=paid_amount-bill_amount;
+            if(returnable<=0){
+                whole_data.style.display="none";
+                change.innerHTML=`Please take <i class="fas fa-rupee-sign"></i>  ${Math.abs(paid_amount-bill_amount)} more from  the customer.`
+                change.style.color='pink';
+            }
+            else{
+                
+                handler();
+                change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${paid_amount-bill_amount} to the customer.`
+                change.style.color='green';
+            }
+        }
     }  
 })
 
@@ -50,10 +71,8 @@ function errorhandler(){
     output_div.style.display="block";
 
     setTimeout(()=>{
-        change.innerHTML=""
-        change.style.color="white";
-        output_div.style.display="none";
-    },2500)
+        whole_data.style.display="none";
+    },2000)
 }
 clear.addEventListener("click",()=>{
     window.location.reload()

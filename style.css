@@ -31,6 +31,9 @@ input{
 input:focus{
     outline: none;
 }
+#paid{
+    display: none;
+}
 h2{
     text-decoration: 3px solid underline;
 }
