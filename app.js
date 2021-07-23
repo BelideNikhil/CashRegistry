@@ -17,41 +17,42 @@ const notes_num= [2000, 500, 100, 10, 5, 1]
 
 
 calculate.addEventListener("click",()=>{
-    calculate.innerHTML=`Next <i class="fas fa-angle-double-right"></i>`;
     output_div.style.display="block";
+    calculate.innerHTML=`Next <i class="fas fa-angle-double-right"></i>`;
     let bill_amount=document.querySelector("#bill")
     let paid_amount=document.querySelector("#paid")
 
     paid_amount.style.display="none";
     
-    const return_amount=document.querySelector("#change")
+    const change=document.querySelector("#change")
     bill_amount=Number(bill_amount.value)
-    
     if( bill_amount===0 ){
-        console.log(bill_amount)
         errorhandler();
     }
     else{
-        calculate.innerHTML=`Calculate <i class="fas fa-angle-double-right"></i>`;
         paid_amount.style.display="block";
         paid_amount=Number(paid_amount.value)
-        if( paid_amount===0 ){
-            errorhandler();
-        }
-        else{
-            
+        calculate.innerHTML=`Calculate <i class="fas fa-angle-double-right"></i>`;
+        if( paid_amount!=0){
             returnable=paid_amount-bill_amount;
-            if(returnable<=0){
+            if(returnable<0){
                 whole_data.style.display="none";
                 change.innerHTML=`Please take <i class="fas fa-rupee-sign"></i>  ${Math.abs(paid_amount-bill_amount)} more from  the customer.`
                 change.style.color='pink';
             }
+            else if(returnable===0){
+                whole_data.style.display="none";
+                change.innerHTML=`Thank the customer and give him the Bill.`
+                change.style.color='wheat';
+            }
             else{
-                
                 handler();
                 change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${paid_amount-bill_amount} to the customer.`
-                change.style.color='green';
+                change.style.color='#50cf50';
             }
+        }else{
+            change.innerHTML="Please enter the amount given by customer to print the Bill."
+            change.style.color="#50cf50"
         }
     }  
 })
@@ -71,8 +72,8 @@ function errorhandler(){
     output_div.style.display="block";
 
     setTimeout(()=>{
-        whole_data.style.display="none";
-    },2000)
+        output_div.style.display="none";
+    },3000)
 }
 clear.addEventListener("click",()=>{
     window.location.reload()
