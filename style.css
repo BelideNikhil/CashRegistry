@@ -55,7 +55,6 @@ h2{
     display: none;
     border: 2px double black;
     margin: 10px 0;
-    height: 40px;
     min-width: 250px;
     max-width: max-content;
     opacity: 1.5;
@@ -97,7 +96,7 @@ h2{
         width: 150px;
         height: 20px;
     }
-    #btn,#clear{
+    #calculate,#clear{
         width: 120px;
         padding: 7px;
         font-weight: 500;
@@ -111,7 +110,7 @@ h2{
     }
     .data{
         margin: 10px 0;
-        height: 20px;
+        height: 30px;
         width: 150px;
         padding: 5px 10px;
         display: flex;
