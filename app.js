@@ -20,24 +20,24 @@ calculate.addEventListener("click",()=>{
     output_div.style.display="block";
     calculate.innerHTML=`Next <i class="fas fa-angle-double-right"></i>`;
     let bill_amount=document.querySelector("#bill")
-    let paid_amount=document.querySelector("#paid")
+    let customer_paid_amount=document.querySelector("#paid")
 
-    paid_amount.style.display="none";
+    customer_paid_amount.style.display="none";
     
     const change=document.querySelector("#change")
     bill_amount=Number(bill_amount.value)
-    if( bill_amount===0 ){
+    if( customer_paid_amount===0 ){
         errorhandler();
     }
     else{
-        paid_amount.style.display="block";
-        paid_amount=Number(paid_amount.value)
+        customer_paid_amount.style.display="block";
+        customer_paid_amount=Number(customer_paid_amount.value)
         calculate.innerHTML=`Calculate <i class="fas fa-angle-double-right"></i>`;
-        if( paid_amount!=0){
-            returnable=paid_amount-bill_amount;
+        if( customer_paid_amount!=0){
+            let returnable=customer_paid_amount-bill_amount;
             if(returnable<0){
                 whole_data.style.display="none";
-                change.innerHTML=`Please take <i class="fas fa-rupee-sign"></i>  ${Math.abs(paid_amount-bill_amount)} more from  the customer.`
+                change.innerHTML=`Please take <i class="fas fa-rupee-sign"></i>  ${Math.abs(customer_paid_amount-bill_amount)} more from  the customer.`
                 change.style.color='pink';
             }
             else if(returnable===0){
@@ -46,8 +46,8 @@ calculate.addEventListener("click",()=>{
                 change.style.color='wheat';
             }
             else{
-                handler();
-                change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${paid_amount-bill_amount} to the customer.`
+                handler(returnable);
+                change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${customer_paid_amount-bill_amount} to the customer.`
                 change.style.color='#50cf50';
             }
         }else{
@@ -56,13 +56,12 @@ calculate.addEventListener("click",()=>{
         }
     }  
 })
-
-function handler(){
+function handler(returnable){
     whole_data.style.display="block";
     for(let i=0;i<notes_num.length;i++){
+        // below two are independent of one another
         Notes[i].innerHTML=Math.floor(returnable/notes_num[i])
-        newRemainder=(returnable%notes_num[i]);
-        returnable=newRemainder;
+        returnable=(returnable%notes_num[i]);
     }
 }
 function errorhandler(){
