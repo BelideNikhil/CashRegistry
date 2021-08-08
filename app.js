@@ -58,9 +58,15 @@ calculate.addEventListener("click",()=>{
 })
 function handler(returnable){
     whole_data.style.display="block";
+    let x;
     for(let i=0;i<notes_num.length;i++){
         // below two are independent of one another
-        Notes[i].innerHTML=Math.floor(returnable/notes_num[i])
+        x=Math.floor(returnable/notes_num[i])
+        if(x===0){
+            Notes[i].innerHTML=''
+        }else{
+            Notes[i].innerHTML=x
+        }
         returnable=(returnable%notes_num[i]);
     }
 }
