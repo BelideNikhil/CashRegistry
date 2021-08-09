@@ -26,14 +26,14 @@ calculate.addEventListener("click",()=>{
     
     const change=document.querySelector("#change")
     bill_amount=Number(bill_amount.value)
-    if( customer_paid_amount===0 ){
+    if(bill_amount<=0){
         errorhandler();
     }
     else{
         customer_paid_amount.style.display="block";
         customer_paid_amount=Number(customer_paid_amount.value)
         calculate.innerHTML=`Calculate <i class="fas fa-angle-double-right"></i>`;
-        if( customer_paid_amount!=0){
+        if( customer_paid_amount>0){
             let returnable=customer_paid_amount-bill_amount;
             if(returnable<0){
                 whole_data.style.display="none";
@@ -50,9 +50,11 @@ calculate.addEventListener("click",()=>{
                 change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${customer_paid_amount-bill_amount} to the customer.`
                 change.style.color='#50cf50';
             }
-        }else{
+        }else if(customer_paid_amount===0){
             change.innerHTML="Please enter the amount given by customer to print the Bill."
             change.style.color="#50cf50"
+        }else{
+            errorhandler()
         }
     }  
 })
@@ -71,14 +73,10 @@ function handler(returnable){
     }
 }
 function errorhandler(){
-    change.innerHTML="Please enter valid data";
+    change.innerHTML="Please enter valid data to proceed.";
     change.style.color="pink";
     whole_data.style.display="none";
     output_div.style.display="block";
-
-    setTimeout(()=>{
-        output_div.style.display="none";
-    },3000)
 }
 clear.addEventListener("click",()=>{
     window.location.reload()
