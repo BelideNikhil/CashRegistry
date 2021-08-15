@@ -5,6 +5,7 @@ const clear=document.querySelector("#clear")
 let two_thousand=document.querySelector("#twothousand")
 let five_hundred=document.querySelector("#fivehundred")
 let hundredd=document.querySelector("#hundred")
+let twenty=document.querySelector("#twenty")
 let tenn=document.querySelector("#ten")
 let fivee=document.querySelector("#five")
 let onee=document.querySelector("#one")
@@ -12,8 +13,8 @@ let onee=document.querySelector("#one")
 const whole_data=document.querySelector(".whole_data")
 const output_div=document.querySelector(".output")
 
-const Notes=[two_thousand,five_hundred,hundredd,tenn,fivee,onee]
-const notes_num= [2000, 500, 100, 10, 5, 1]
+const Notes=[two_thousand,five_hundred,hundredd,twenty,tenn,fivee,onee]
+const notes_num= [2000, 500, 100,20, 10, 5, 1]
 
 
 calculate.addEventListener("click",()=>{
@@ -47,7 +48,7 @@ calculate.addEventListener("click",()=>{
             }
             else{
                 handler(returnable);
-                change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${customer_paid_amount-bill_amount} to the customer.`
+                change.innerHTML=`Please return <i class="fas fa-rupee-sign"></i>  ${Math.ceil((customer_paid_amount-bill_amount)* 100)/100} to the customer.`
                 change.style.color='#50cf50';
             }
         }else if(customer_paid_amount===0){
